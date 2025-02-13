@@ -25,7 +25,7 @@ export class KendoComponentComponent {
   public svgLeft: SVGIcon = alignLeftIcon;
   public svgJustify: SVGIcon = alignJustifyIcon;
 
-  public date = new Date(2025, 1, 12, 15, 0, 0);
+  public date:Date = new Date();
 
   public gridItems: Observable<GridDataResult> | undefined;
   public pageSize: number = 10;
@@ -37,7 +37,12 @@ export class KendoComponentComponent {
   public defaultItem: Category = { text: "Filter by Category", value: null };
 
   constructor(private service: ProductService, private Notificationservice: NotificationService) {
+    setInterval(() => {
+      this.date = new Date();
+    }, 1000);
+
     this.loadGridItems();
+    
   }
 
   public pageChange(event: PageChangeEvent): void {
@@ -76,11 +81,10 @@ export class KendoComponentComponent {
       hideAfter: 1000,
       animation: { type: 'fade', duration: 500 },
       position: { horizontal: 'right', vertical: 'top' },
-      type: { style: 'error', icon: true },
+      type: { style: 'success', icon: true },
       height: 100,
       width: 300 ,
       cssClass: ['.notification-font']
- 
     });
   }
 
@@ -99,6 +103,19 @@ export class KendoComponentComponent {
 
   //Upload file restriction 
   public RestrictionFile :FileRestrictions = {
-    allowedExtensions: ['.jpg', '.png', '.gif'] 
+    allowedExtensions: ['.jpg', '.png'],
+    minFileSize: 0,
+    maxFileSize: 1000000 
   }
+
+  //called the component from the child component
+  public message: string = '';
+
+  public receiveMessage(message: string): void {
+    this.message = message;
+  }
+
+  //called the component to the child component
+  public ParentMessage: string = "Hello This Message is from Parent Component";
+
 }
