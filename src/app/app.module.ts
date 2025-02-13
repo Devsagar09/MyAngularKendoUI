@@ -23,9 +23,15 @@ import {UploadModule} from '@progress/kendo-angular-upload';
 import { FileSelectModule } from '@progress/kendo-angular-upload';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ChildComponentComponent } from './child-component/child-component.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { KendoComponentComponent } from './kendo-component/kendo-component.component';
 @NgModule({
   declarations: [
-    AppComponent 
+    AppComponent,
+    ChildComponentComponent,
+    NavbarComponent,
+    KendoComponentComponent 
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+
+
+  <nav class="navbar">
+    <div class="logo">MyApp</div>
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li> 
+      <li><a routerLink="/child" routerLinkActive="active">Child</a></li> 
+    </ul>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </nav>
+  <div class="mobile-menu" [ngClass]="{ 'open': isMenuOpen }">
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/child" routerLinkActive="active">About</a>
+
+  </div>
+ 
