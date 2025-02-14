@@ -10,7 +10,7 @@ import { UserListComponent } from './UserMaster/user-list/user-list.component';
 const routes: Routes = [
   {
     path:'',
-    component: KendoComponentComponent
+    component: LoginUserComponent
   },
   {
     path:'home',

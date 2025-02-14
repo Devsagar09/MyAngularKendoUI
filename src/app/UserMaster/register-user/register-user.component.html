@@ -1,4 +1,4 @@
-<!-- <div class="container">
+<div class="container">
     <h2>Create User</h2>
     <form (ngSubmit)="createUser()" #userForm="ngForm">
         <div>
@@ -20,6 +20,41 @@
         </div>
 
         <button type="submit" [disabled]="userForm.invalid">Create User</button>
-    </form> -->
+    </form>
 
  
+
+<!-- <div class="example" >
+    <form class="k-form k-form-md" [formGroup]="form" (ngSubmit)="createUser()">
+        <h5>Register User</h5>
+        <kendo-formfield>
+            <kendo-label [for]="fullName" text="Full Name"></kendo-label>
+            <input type="text" [(ngModel)]="user.username" name="username" required />
+
+            <kendo-formerror>Error: Full Name is required</kendo-formerror>
+        </kendo-formfield>
+
+        <kendo-formfield>
+            <kendo-label [for]="password" text="Password"></kendo-label>
+            <input type="text" [(ngModel)]="user.password" name="username" required />
+
+            <kendo-formerror>Error: Password is required</kendo-formerror>
+        </kendo-formfield>
+
+        <kendo-formfield>
+            <kendo-label [for]="email" text="E-mail"></kendo-label>
+            <input type="text" [(ngModel)]="user.email" name="username" required />
+
+            <kendo-formerror>Error: Email is required</kendo-formerror>
+        </kendo-formfield>
+
+        <kendo-formfield>
+            <kendo-label [for]="address" text="Address"></kendo-label>
+            <input type="text" [(ngModel)]="user.address" name="username" required />
+
+            <kendo-formerror>Error: Address is required</kendo-formerror>
+        </kendo-formfield>
+
+        <button kendoButton type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+</div> -->

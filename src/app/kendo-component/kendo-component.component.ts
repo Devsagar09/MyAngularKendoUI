@@ -41,8 +41,8 @@ export class KendoComponentComponent {
       this.date = new Date();
     }, 1000);
 
-    this.loadGridItems();
-    
+    this.loadGridItems()  ;
+   
   }
 
   public pageChange(event: PageChangeEvent): void {

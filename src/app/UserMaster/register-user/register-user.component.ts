@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiServiceService } from '../api-service.service'; 
-import {Validators, FormGroup, FormControl } from '@angular/forms';
+import { ApiServiceService } from '../api-service.service';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-register-user',
@@ -11,16 +11,17 @@ import {Validators, FormGroup, FormControl } from '@angular/forms';
 export class RegisterUserComponent {
   title = 'Register User';
   posts: any[] = [];
+  form: FormGroup;
 
-  constructor(private apiService: ApiServiceService) { }
-
-  // ngOnInit() {
-  //   this.apiService.getAllUser().subscribe((data: any[]) => {
-  //     console.log(data);
-  //     this.posts = data;
-  //   })
-  // }
-
+  constructor(private apiService: ApiServiceService) {
+    this.form = new FormGroup({
+      fullName: new FormControl(this.user.username, [Validators.required]),
+      email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+      password: new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
+      address: new FormControl(this.user.address, [Validators.required])
+    });
+  }
+  
   user = {
     username: '',
     email: '',

@@ -8,6 +8,13 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { FormsModule } from '@angular/forms';
 import { UserListComponent } from './user-list/user-list.component';
 
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label'; 
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from '@progress/kendo-angular-buttons';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+
 @NgModule({
   declarations: [
     LoginUserComponent,
@@ -17,7 +24,12 @@ import { UserListComponent } from './user-list/user-list.component';
   imports: [
     CommonModule,
     FormsModule,
-    GridModule
+    GridModule,
+    InputsModule,
+    LabelModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    DialogModule
   ],
   providers: [ApiServiceService]
 })

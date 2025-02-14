@@ -31,4 +31,8 @@ export class ApiServiceService {
   deleteUser(id:number):Observable<any> {
     return this.http.delete<any>(this.apiUrl + id);
   }
+
+  loginuser(user:any):Observable<any> {
+    return this.http.post<any>(this.apiUrl + "login", user);
+  }
 }

@@ -1,1 +1,15 @@
-<p>login-user works!</p>
+<div class="container">
+    <h2>Login</h2>
+    <form (ngSubmit)="loginUser()" #userForm="ngForm">
+        <div>
+            <label>Username:</label>
+            <input type="text" [(ngModel)]="user.username" name="username" required />
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" [(ngModel)]="user.password" name="password" required />
+        </div>
+        <button type="submit" [disabled]="userForm.invalid">Login</button>
+    </form>
+</div>
