@@ -41,9 +41,12 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
+              "bootswatch/dist/united/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -103,9 +106,12 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
+              "bootswatch/dist/united/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }

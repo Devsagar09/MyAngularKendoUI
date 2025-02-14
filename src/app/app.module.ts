@@ -26,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChildComponentComponent } from './child-component/child-component.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { KendoComponentComponent } from './kendo-component/kendo-component.component';
+ 
+import { UsermasterModule } from './UserMaster/usermaster.module'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { KendoComponentComponent } from './kendo-component/kendo-component.compo
     GaugesModule,
     NotificationModule,
     UploadModule,
-    FileSelectModule
+    FileSelectModule,
+    UsermasterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
