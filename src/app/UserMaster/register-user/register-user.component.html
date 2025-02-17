@@ -1,60 +1,39 @@
-<div class="container">
-    <h2>Create User</h2>
-    <form (ngSubmit)="createUser()" #userForm="ngForm">
-        <div>
-            <label>Username:</label>
-            <input type="text" [(ngModel)]="user.username" name="username" required />
-        </div>
+<div class="k-card k-card-flat k-card-border k-shadow-md form-container">
+    <div class="k-card-header">
+        <h3 class="k-card-title"><b>Create User</b></h3>
+    </div>
 
-        <div>
-            <label>Email:</label>
-            <input type="email" [(ngModel)]="user.email" name="email" required />
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" [(ngModel)]="user.password" name="password" required />
-        </div>
-        <div>
-            <label>Address:</label>
-            <input type="text" [(ngModel)]="user.address" name="address" />
-        </div>
+    <div class="k-card-body">
+        <form (ngSubmit)="createUser()" #userForm="ngForm" class="k-form k-form-vertical">
 
-        <button type="submit" [disabled]="userForm.invalid">Create User</button>
-    </form>
+            <kendo-formfield>
+                <kendo-label text="Username"></kendo-label>
+                <kendo-textbox [(ngModel)]="user.username" name="username" required></kendo-textbox>
+                <kendo-formerror *ngIf="userForm.submitted && !user.username">Username is required</kendo-formerror>
+            </kendo-formfield>
 
- 
+            <kendo-formfield>
+                <kendo-label text="Email"></kendo-label>
+                <kendo-textbox [(ngModel)]="user.email" name="email" required></kendo-textbox>
+                <kendo-formerror *ngIf="userForm.submitted && !user.email">Email is required</kendo-formerror>
+            </kendo-formfield>
 
-<!-- <div class="example" >
-    <form class="k-form k-form-md" [formGroup]="form" (ngSubmit)="createUser()">
-        <h5>Register User</h5>
-        <kendo-formfield>
-            <kendo-label [for]="fullName" text="Full Name"></kendo-label>
-            <input type="text" [(ngModel)]="user.username" name="username" required />
+            <kendo-formfield>
+                <kendo-label text="Password"></kendo-label>
+                <kendo-textbox [(ngModel)]="user.password" name="password" type="password" required></kendo-textbox>
+                <kendo-formerror *ngIf="userForm.submitted && !user.password">Password is required</kendo-formerror>
+            </kendo-formfield>
 
-            <kendo-formerror>Error: Full Name is required</kendo-formerror>
-        </kendo-formfield>
+            <kendo-formfield>
+                <kendo-label text="Address"></kendo-label>
+                <kendo-textarea [(ngModel)]="user.address" name="address" [rows]="3" required></kendo-textarea>
+                <kendo-formerror *ngIf="userForm.submitted && !user.address">Address is required</kendo-formerror>
+            </kendo-formfield>
 
-        <kendo-formfield>
-            <kendo-label [for]="password" text="Password"></kendo-label>
-            <input type="text" [(ngModel)]="user.password" name="username" required />
-
-            <kendo-formerror>Error: Password is required</kendo-formerror>
-        </kendo-formfield>
-
-        <kendo-formfield>
-            <kendo-label [for]="email" text="E-mail"></kendo-label>
-            <input type="text" [(ngModel)]="user.email" name="username" required />
-
-            <kendo-formerror>Error: Email is required</kendo-formerror>
-        </kendo-formfield>
-
-        <kendo-formfield>
-            <kendo-label [for]="address" text="Address"></kendo-label>
-            <input type="text" [(ngModel)]="user.address" name="username" required />
-
-            <kendo-formerror>Error: Address is required</kendo-formerror>
-        </kendo-formfield>
-
-        <button kendoButton type="submit" [disabled]="form.invalid">Submit</button>
-    </form>
-</div> -->
+            <div class="k-form-buttons">
+                <button kendoButton type="submit" themeColor="info">Create User</button>
+                <a (click)="navigateToLogin()" themeColor="primary" fillMode="flat" style="cursor: pointer; text-decoration: underline; color: rgb(73, 73, 224);">Login if already user !!</a>
+            </div>
+        </form>
+    </div>
+</div>

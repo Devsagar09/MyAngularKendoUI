@@ -22,8 +22,8 @@
 
   <kendo-grid-column title="Action" [width]="120">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <button kendoButton [svgIcon]="svgTransh" title="Delete" (click)="openDialog(dataItem.userid)"></button>
-      <button kendoButton [svgIcon]="svgPencil" title="Edit" (click)="openEditDialog(dataItem.userid)"></button>
+      <button kendoButton [svgIcon]="svgTransh" title="Delete" (click)="openDialog(dataItem.userid)" themeColor="primary"></button> |
+      <button kendoButton [svgIcon]="svgPencil" title="Edit" (click)="openEditDialog(dataItem.userid)" themeColor="info"></button>
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
@@ -31,31 +31,31 @@
 <kendo-dialog *ngIf="opened" title="Delete User" (close)="closeDialog()" [minWidth]="350" [width]="450">
   <p style="margin: 30px; text-align: center;"><b>Are you sure you want to delete?</b></p>
   <kendo-dialog-actions>
-    <button kendoButton (click)="closeDialog()" title="No">No</button>
-    <button kendoButton (click)="deleteUser()" themeColor="primary" title="Yes">Yes</button>
+    <button kendoButton (click)="closeDialog()" title="No">Cancle</button>
+    <button kendoButton (click)="deleteUser()" themeColor="error" title="Yes">Delete</button>
   </kendo-dialog-actions>
 </kendo-dialog>
 
-<kendo-dialog *ngIf="editDialogopen" title="Edit User" (close)="closeEditDialog()" [minWidth]="350" [width]="450">
-  <div style="margin: 30px;">
-    <label>Username:</label>
-    <input type="text" [(ngModel)]="user.username" name="username" />
+<kendo-dialog *ngIf="editDialogopen" title="Edit User" (close)="closeEditDialog()" [minWidth]="350" [width]="450" >
+  <div class="k-form k-form-horizontal" style="margin: 30px;">
+    <kendo-label text="Username"></kendo-label>
+    <kendo-textbox type="text" [(ngModel)]="user.username" name="username" ></kendo-textbox>
   </div>
   <div style="margin: 30px;">
-    <label>Password:</label>
-    <input type="password" [(ngModel)]="user.password" name="password" />
+    <kendo-label text="Password"></kendo-label>
+    <kendo-textbox type="password" [(ngModel)]="user.password" name="password" ></kendo-textbox>
   </div>
   <div style="margin: 30px;">
-    <label>Email:</label>
-    <input type="email" [(ngModel)]="user.email" name="email" />
+    <kendo-label text="Email"></kendo-label>
+    <kendo-textbox [(ngModel)]="user.email" name="email" ></kendo-textbox>
   </div>
   <div style="margin: 30px;">
-    <label>Address:</label>
-    <input type="text" [(ngModel)]="user.address" name="address" />
+    <kendo-label text="Address"></kendo-label>
+    <kendo-textbox type="text" [(ngModel)]="user.address" name="address" ></kendo-textbox>
   </div>
   <kendo-dialog-actions>
-    <button kendoButton (click)="closeEditDialog()" title="No">No</button>
-    <button kendoButton (click)="UpdateUser()" themeColor="primary" title="Yes">Yes</button>
+    <button kendoButton (click)="closeEditDialog()" title="No" >Cancle</button>
+    <button kendoButton (click)="UpdateUser()" themeColor="info" title="Yes">Update</button>
   </kendo-dialog-actions>
 </kendo-dialog>
 

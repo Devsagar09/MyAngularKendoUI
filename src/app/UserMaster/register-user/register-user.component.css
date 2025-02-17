@@ -1,19 +1,10 @@
-h5{
-    justify-content: center;
-    display: flex;
+.form-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 16px;
 }
-.example {
-    display: flex;
-    justify-content: center;
-  }
-  .wrap {
-    display: flex;
-    justify-content: space-between;
-  }
-  .wrap .arrival-date {
-    width: 90%;
-    margin-right: 18px;
-  }
-  .k-form {
-    width: 400px;
-  }
+.k-form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}

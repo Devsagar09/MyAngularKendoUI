@@ -1,15 +1,27 @@
-<div class="container">
-    <h2>Login</h2>
-    <form (ngSubmit)="loginUser()" #userForm="ngForm">
-        <div>
-            <label>Username:</label>
-            <input type="text" [(ngModel)]="user.username" name="username" required />
-        </div>
+<div class="k-card k-card-flat k-card-border k-shadow-md form-container">
+    <div class="k-card-header">
+        <h3 class="k-card-title"><b>Login</b></h3>
+    </div>
 
-        <div>
-            <label>Password:</label>
-            <input type="password" [(ngModel)]="user.password" name="password" required />
-        </div>
-        <button type="submit" [disabled]="userForm.invalid">Login</button>
-    </form>
+    <div class="k-card-body">
+        <form (ngSubmit)="loginUser()" #userForm="ngForm" class="k-form k-form-vertical">
+
+            <kendo-formfield>
+                <kendo-label text="Username"></kendo-label>
+                <kendo-textbox [(ngModel)]="user.username" name="username" required></kendo-textbox>
+                <kendo-formerror *ngIf="userForm.submitted && !user.username">Username is required</kendo-formerror>
+            </kendo-formfield> 
+
+            <kendo-formfield>
+                <kendo-label text="Password"></kendo-label>
+                <kendo-textbox [(ngModel)]="user.password" name="password" type="password" required></kendo-textbox>
+                <kendo-formerror *ngIf="userForm.submitted && !user.password">Password is required</kendo-formerror>
+            </kendo-formfield> 
+
+            <div class="k-form-buttons">
+                <button kendoButton type="submit" themeColor="info">Login</button>
+                <a (click)="navigateToRegister()" themeColor="primary" fillMode="flat" style="cursor: pointer; text-decoration: underline; color: rgb(73, 73, 224);">Register!!</a>
+            </div>
+        </form>
+    </div>
 </div>

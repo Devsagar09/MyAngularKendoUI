@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css',
 })
+
 export class RegisterUserComponent {
   title = 'Register User';
   posts: any[] = [];
@@ -61,6 +62,12 @@ export class RegisterUserComponent {
       width: 300 , 
       cssClass: ['.notification-font']
     });
+  }
+
+  //navigate to Login Page
+  navigateToLogin(): void {
+    console.log("Login User");
+    this.router.navigate(['/login']);
   }
 
 }

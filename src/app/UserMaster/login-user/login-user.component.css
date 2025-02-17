@@ -1,0 +1,10 @@
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 16px;
+  }
+  .k-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
