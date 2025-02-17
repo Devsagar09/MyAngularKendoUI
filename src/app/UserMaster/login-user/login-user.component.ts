@@ -42,10 +42,10 @@ export class LoginUserComponent {
         content: 'Username or Password is incorrect', 
         hideAfter: 1000,
         animation: { type: 'fade', duration: 500 },
-        position: { horizontal: 'right', vertical: 'top' },
+        position: { horizontal: 'center', vertical: 'top' },
         type: { style: 'error', icon: true },
-        height: 100,
-        width: 300 ,
+        height: 50,
+        width: 300 , 
         cssClass: ['.notification-font']
       });
     }

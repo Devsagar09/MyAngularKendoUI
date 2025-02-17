@@ -1,38 +1,63 @@
-<p>{{title}}</p>
+<p
+  style="margin: 30px; text-align: center; background-color: rgb(168, 96, 236); color: aliceblue; padding: 5px; border-radius: 5px;">
+  <b>{{title}}</b>
+</p>
+
+<button style="margin: 10px;" kendoButton themeColor="info" [svgIcon]="svgPlus" [toggleable]="true"
+  (click)="navigateToRegisterUser()">Add User</button>
 
 <kendo-grid [data]="gridItems" [pageSize]="pageSize" [skip]="skip" [pageable]="true" (pageChange)="pageChange($event)"
-    [sortable]="true" [sort]="sortDescriptor" (sortChange)="handleSortChange($event)">
-    <kendo-grid-column field="username" title="Name">
+  [sortable]="true" [sort]="sortDescriptor" (sortChange)="handleSortChange($event)">
+  <kendo-grid-column field="username" title="Name">
 
-    </kendo-grid-column>
-    <kendo-grid-column field="password" title="Password">
+  </kendo-grid-column>
+  <kendo-grid-column field="password" title="Password">
 
-    </kendo-grid-column>
-    <kendo-grid-column field="email" title="Email">
+  </kendo-grid-column>
+  <kendo-grid-column field="email" title="Email">
 
-    </kendo-grid-column>
-    <kendo-grid-column field="address" title="Address">
-    </kendo-grid-column>
+  </kendo-grid-column>
+  <kendo-grid-column field="address" title="Address">
+  </kendo-grid-column>
 
-    <kendo-grid-column title="Action" [width]="120">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <button kendoButton [svgIcon]="svgTransh" title="Delete" (click)="openDialog(dataItem.userid)"></button>
-            <button kendoButton [svgIcon]="svgPencil" title="Edit"></button>
-        </ng-template>
-    </kendo-grid-column>
-
+  <kendo-grid-column title="Action" [width]="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <button kendoButton [svgIcon]="svgTransh" title="Delete" (click)="openDialog(dataItem.userid)"></button>
+      <button kendoButton [svgIcon]="svgPencil" title="Edit" (click)="openEditDialog(dataItem.userid)"></button>
+    </ng-template>
+  </kendo-grid-column>
 </kendo-grid>
 
-<kendo-dialog *ngIf="opened" title="Please Confirm" (close)="closeDialog()" [minWidth]="350" [width]="450">
-    <p style="margin: 30px; text-align: center;">Are you sure you want to delete?</p>
-    <kendo-dialog-actions>
-      <button kendoButton (click)="closeDialog()" title="No">No</button>
-      <button kendoButton (click)="deleteUser()" themeColor="success" title="Yes">Yes</button>
-    </kendo-dialog-actions>
-  </kendo-dialog>
+<kendo-dialog *ngIf="opened" title="Delete User" (close)="closeDialog()" [minWidth]="350" [width]="450">
+  <p style="margin: 30px; text-align: center;"><b>Are you sure you want to delete?</b></p>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeDialog()" title="No">No</button>
+    <button kendoButton (click)="deleteUser()" themeColor="primary" title="Yes">Yes</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
 
-
-
+<kendo-dialog *ngIf="editDialogopen" title="Edit User" (close)="closeEditDialog()" [minWidth]="350" [width]="450">
+  <div style="margin: 30px;">
+    <label>Username:</label>
+    <input type="text" [(ngModel)]="user.username" name="username" />
+  </div>
+  <div style="margin: 30px;">
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="user.password" name="password" />
+  </div>
+  <div style="margin: 30px;">
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="user.email" name="email" />
+  </div>
+  <div style="margin: 30px;">
+    <label>Address:</label>
+    <input type="text" [(ngModel)]="user.address" name="address" />
+  </div>
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeEditDialog()" title="No">No</button>
+    <button kendoButton (click)="UpdateUser()" themeColor="primary" title="Yes">Yes</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
 
 <!-- address 
 email 
