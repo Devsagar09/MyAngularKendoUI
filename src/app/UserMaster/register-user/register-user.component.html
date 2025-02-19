@@ -1,11 +1,10 @@
 <div class="k-card k-card-flat k-card-border k-shadow-md form-container">
-    <div class="k-card-header">
-        <h3 class="k-card-title"><b>Create User</b></h3>
+    <div class="k-card-header" style="justify-content: center;display: flex;">
+        <p class="k-card-title" style="font-size: 20px;"><b>Create User</b></p>
     </div>
 
     <div class="k-card-body">
         <form (ngSubmit)="createUser()" #userForm="ngForm" class="k-form k-form-vertical">
-
             <kendo-formfield>
                 <kendo-label text="Username"></kendo-label>
                 <kendo-textbox [(ngModel)]="user.username" name="username" required></kendo-textbox>
@@ -31,7 +30,7 @@
             </kendo-formfield>
 
             <div class="k-form-buttons">
-                <button kendoButton type="submit" themeColor="info">Create User</button>
+                <button kendoButton type="submit" themeColor="info">Register</button>
                 <a (click)="navigateToLogin()" themeColor="primary" fillMode="flat" style="cursor: pointer; text-decoration: underline; color: rgb(73, 73, 224);">Login if already user !!</a>
             </div>
         </form>

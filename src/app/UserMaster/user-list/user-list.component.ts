@@ -26,7 +26,7 @@ export class UserListComponent {
   public sortDescriptor: SortDescriptor[] = [];
   public filterTerm: number | null = null;
 
-  constructor(private apiService: ApiServiceService, private route: Router,private Notificationservice: NotificationService) { this.loadGridItems(); }
+  constructor(private apiService: ApiServiceService, private route: Router, private Notificationservice: NotificationService) { this.loadGridItems(); }
 
   public opened = false;
   public userIdToDelete: number | null = null;
@@ -35,6 +35,8 @@ export class UserListComponent {
   updatedUserData: any = {};
 
   public editDialogopen = false;
+
+ 
 
   user = {
     useid: this.userIdToUpdate,
@@ -105,7 +107,7 @@ export class UserListComponent {
 
   UpdateUser(): void {
     if (this.userIdToUpdate !== null && this.updatedUserData) {
-      this.updatedUserData.userid = this.userIdToUpdate;  
+      this.updatedUserData.userid = this.userIdToUpdate;
       const updatedUser = {
         userid: this.userIdToUpdate,
         username: this.user.username,
@@ -139,16 +141,14 @@ export class UserListComponent {
   //Notitfication
   public showNotification(): void {
     this.Notificationservice.show({
-      content: 'User Edited Successfully', 
+      content: 'User Edited Successfully',
       hideAfter: 1000,
       animation: { type: 'fade', duration: 500 },
       position: { horizontal: 'center', vertical: 'top' },
       type: { style: 'success', icon: true },
-      height: 50,
-      width: 300 , 
-      cssClass: ['.notification-font']
+      height: 70,
+      width: 300,
+      cssClass: 'custom-notification'
     });
   }
-
-
 }

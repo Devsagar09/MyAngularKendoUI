@@ -23,7 +23,7 @@ export class RegisterUserComponent {
       password: new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
       address: new FormControl(this.user.address, [Validators.required])
     });
-  }
+  } 
   
   user = {
     username: '',
