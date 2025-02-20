@@ -44,8 +44,17 @@ export class UserListComponent {
 
   userIdToUpdate: number | null = null;
   updatedUserData: any = {};
+  loading:boolean = true;
 
   public editDialogopen = false;
+
+  ngOnInit(): void {
+    // Simulate API delay
+    setTimeout(() => {
+      this.loadGridItems(); 
+      this.loading = false;
+    }, 2000);  
+  }
 
   user = {
     useid: this.userIdToUpdate,
@@ -159,6 +168,21 @@ export class UserListComponent {
       height: 60,
       width: 300,
       cssClass: 'custom-notification'
+    });
+  }
+
+  loadGridData() {
+    this.loading = true;  
+  
+    this.apiService.getAllUser().subscribe({
+      next: (data) => {
+        this.gridItems = data;
+        this.loading = false; 
+      },
+      error: (err) => {
+        console.error(err);
+        this.loading = false;  
+      },
     });
   }
 }

@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { TooltipModule } from '@progress/kendo-angular-tooltip';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TooltipModule } from '@progress/kendo-angular-tooltip';
     ReactiveFormsModule,
     ButtonModule,
     DialogModule,
-    TooltipModule
+    TooltipModule,
+    IndicatorsModule
   ],
   providers: [ApiServiceService]
 })
