@@ -7,10 +7,13 @@ import { RegisterUserComponent } from './UserMaster/register-user/register-user.
 import { LoginUserComponent } from './UserMaster/login-user/login-user.component';
 import { UserListComponent } from './UserMaster/user-list/user-list.component';
 
+let defaultPath = sessionStorage.getItem('userID') ? 'getUser' : 'login';
+
 const routes: Routes = [
   {
-    path:'',
-    component: LoginUserComponent
+    path: '', 
+    redirectTo: defaultPath, 
+    pathMatch: 'full' 
   },
   {
     path:'home',

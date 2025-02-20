@@ -26,16 +26,21 @@ export class LoginUserComponent {
   loginUser() {
     this.apiService.loginuser(this.user).subscribe({
       next: (data: any) => { 
-        this.posts.push(data);
-        this.successNotification()
-        this.router.navigate(['/home']);
+        sessionStorage.setItem('userID',data.userid)
+        sessionStorage.setItem('userName',data.username)
+        const usernamevalue = data.username
+        this.showNotification(`${usernamevalue} successfully Login`, 'success');
+        this.router.navigate(['/getUser']);
+        console.log("Login successfully"+data.userid)
+        
       },
       error: (err) => {
         console.error(err);
-        this.showNotification()
+        this.showNotification("Invalid Username or Password",'error')
       }
     });
   }
+ 
 
   //navigate to registerpage
   navigateToRegister(): void {
@@ -44,13 +49,13 @@ export class LoginUserComponent {
   }
 
     //wrong Notification
-    public showNotification(): void {
+    public showNotification(message:string,type: 'success' | 'error' | 'info' | 'warning'): void {
       this.Notificationservice.show({
-        content: 'Username or Password is incorrect', 
+        content: message, 
         hideAfter: 1000,
         animation: { type: 'fade', duration: 500 },
         position: { horizontal: 'center', vertical: 'top' },
-        type: { style: 'error', icon: true },
+        type: { style: type, icon: true },
         height: 50,
         width: 300 , 
         cssClass: ['.notification-font']

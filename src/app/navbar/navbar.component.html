@@ -3,15 +3,13 @@
   <nav class="navbar">
     <div class="logo" routerLink="/home">MyApp</div>
     <ul class="nav-links">
-      <li><a routerLink="/home" routerLinkActive="active">Home</a></li> 
-      <li><a routerLink="/child" routerLinkActive="active">Child</a></li> 
-      <a routerLink="/getUser" routerLinkActive="active">User</a>
-      <li><a routerLink="/registeruser" routerLinkActive="active">Register</a></li> 
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li> 
+      <li><a routerLink="/home" routerLinkActive="active"  style="text-decoration: none;">Home</a></li> 
+      <li><a routerLink="/child" routerLinkActive="active"  style="text-decoration: none;">Child</a></li> 
+      <a routerLink="/getUser" routerLinkActive="active"  style="text-decoration: none;">User</a>
+      <li><a routerLink="/registeruser" routerLinkActive="active"  style="text-decoration: none;">Register</a></li> 
+      <li *ngIf="!isLoggedIn"><a routerLink="/login" routerLinkActive="active"  style="text-decoration: none;">Login</a></li> 
+      <li *ngIf="isLoggedIn"><a (click)="logout()"  style="cursor: pointer;text-decoration: none;">Logout</a></li> 
 
-      <!-- put logout button if user is login  -->
-
-      
     </ul>
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
   </nav>
@@ -20,6 +18,7 @@
     <a routerLink="/child" routerLinkActive="active">Child</a>
     <a routerLink="/getUser" routerLinkActive="active">User</a>
     <a routerLink="/registeruser" routerLinkActive="active">Register</a>
-    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Login</a>
+   <a *ngIf="isLoggedIn" (click)="logout()" style="cursor: pointer;">Logout</a>
   </div>
  

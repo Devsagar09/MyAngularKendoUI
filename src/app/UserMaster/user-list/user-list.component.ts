@@ -26,8 +26,19 @@ export class UserListComponent {
   public sortDescriptor: SortDescriptor[] = [];
   public filterTerm: number | null = null;
 
+  /**
+   * Constructs an instance of UserListComponent.
+   * 
+   * @param apiService - The service used to interact with the API.
+   * @param route - The Angular Router service for navigation.
+   * @param Notificationservice - The service used to display notifications.
+   */
   constructor(private apiService: ApiServiceService, private route: Router, private Notificationservice: NotificationService) { this.loadGridItems(); }
 
+  /**
+   * A boolean flag indicating whether the user list component is opened or not.
+   * When set to `true`, the component is displayed; otherwise, it is hidden.
+   */
   public opened = false;
   public userIdToDelete: number | null = null;
 
@@ -35,8 +46,6 @@ export class UserListComponent {
   updatedUserData: any = {};
 
   public editDialogopen = false;
-
- 
 
   user = {
     useid: this.userIdToUpdate,
@@ -119,7 +128,7 @@ export class UserListComponent {
       this.apiService.updateUser(this.userIdToUpdate, updatedUser).subscribe(() => {
         this.loadGridItems();
         this.closeEditDialog();
-        this.showNotification();
+        this.showNotification('Updated user Successfully','success');
       });
     }
   }
@@ -129,6 +138,7 @@ export class UserListComponent {
       this.apiService.deleteUser(this.userIdToDelete).subscribe(() => {
         this.loadGridItems();
         this.closeDialog();
+        this.showNotification('User Delete','error');
       });
     }
   }
@@ -139,14 +149,14 @@ export class UserListComponent {
   }
 
   //Notitfication
-  public showNotification(): void {
+  public showNotification(message: string, type: 'success' | 'error' | 'info' | 'warning'): void {
     this.Notificationservice.show({
-      content: 'User Edited Successfully',
-      hideAfter: 1000,
+      content: message,
+      hideAfter: 2000,
       animation: { type: 'fade', duration: 500 },
       position: { horizontal: 'center', vertical: 'top' },
-      type: { style: 'success', icon: true },
-      height: 70,
+      type: { style: type, icon: true },
+      height: 60,
       width: 300,
       cssClass: 'custom-notification'
     });

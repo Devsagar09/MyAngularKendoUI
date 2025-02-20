@@ -16,6 +16,16 @@ export class RegisterUserComponent {
   posts: any[] = [];
   form: FormGroup; 
 
+  /**
+   * Constructs an instance of RegisterUserComponent.
+   * 
+   * @param apiService - The service used to interact with the API.
+   * @param Notificationservice - The service used to display notifications.
+   * @param router - The Angular Router service used for navigation.
+   * 
+   * Initializes the form group with controls for full name, email, password, and address.
+   * Each control is initialized with the corresponding user property and validators.
+   */
   constructor(private apiService: ApiServiceService,  private Notificationservice: NotificationService,private router:Router) {
     this.form = new FormGroup({
       fullName: new FormControl(this.user.username, [Validators.required]),
@@ -32,6 +42,12 @@ export class RegisterUserComponent {
     address: ''
   };
 
+  /**
+   * Creates a new user by sending the user data to the API service.
+   * On successful creation, the new user data is logged to the console,
+   * added to the posts array, a notification is shown, and the user is
+   * navigated to the '/getUser' route.
+   */
   createUser() {
     this.apiService.createUser(this.user).subscribe((data: any) => {
       console.log(data);
@@ -41,6 +57,11 @@ export class RegisterUserComponent {
     });
   }
 
+  /**
+   * Resets the user data to default values.
+   * This method initializes the `user` object with empty strings for
+   * `username`, `email`, `password`, and `address` properties.
+   */
   resetUserData() {
     this.user = {
       username: '',

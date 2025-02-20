@@ -29,9 +29,9 @@
 
   <kendo-grid-column title="Action" [width]="120">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <button kendoButton [svgIcon]="svgTransh" title="Delete" (click)="openDialog(dataItem.userid)"
+      <button kendoButton [svgIcon]="svgTransh"   (click)="openDialog(dataItem.userid)" kendoTooltip title="Delete" position="left"
         themeColor="primary"></button> |
-      <button kendoButton [svgIcon]="svgPencil" title="Edit" (click)="openEditDialog(dataItem.userid)"
+      <button kendoButton [svgIcon]="svgPencil" (click)="openEditDialog(dataItem.userid)" kendoTooltip title="Edit" position="right"
         themeColor="info"></button>
     </ng-template>
   </kendo-grid-column>
